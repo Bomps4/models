@@ -92,6 +92,7 @@ class SSDMobileNetV2FeatureExtractor(ssd_meta_arch.SSDFeatureExtractor):
       preprocessed_inputs: a [batch, height, width, channels] float tensor
         representing a batch of images.
     """
+    #print("CHIAMA A ME IO FACCIO")
     return (2.0 / 255.0) * resized_inputs - 1.0
 
   def extract_features(self, preprocessed_inputs):

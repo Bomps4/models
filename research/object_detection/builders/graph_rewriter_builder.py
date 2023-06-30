@@ -34,11 +34,13 @@ def build(graph_rewriter_config, is_training):
     if is_training:
       tf.contrib.quantize.experimental_create_training_graph(
           input_graph=tf.get_default_graph(),
-          quant_delay=graph_rewriter_config.quantization.delay
+          quant_delay=graph_rewriter_config.quantization.delay,
+          symmetric=graph_rewriter_config.quantization.symmetric
       )
     else:
       tf.contrib.quantize.experimental_create_eval_graph(
-          input_graph=tf.get_default_graph()
+          input_graph=tf.get_default_graph(),
+          symmetric=graph_rewriter_config.quantization.symmetric
       )
 
     tf.contrib.layers.summarize_collection('quant_vars')
